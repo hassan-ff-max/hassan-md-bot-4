@@ -1,0 +1,23 @@
+const { default: makeWASocket, useMultiFileAuthState } = require('@whiskeysockets/baileys');
+
+async function startBot() {
+    const { state, saveCreds } = await useMultiFileAuthState('session');
+    
+    const sock = makeWASocket({
+        auth: state,
+        printQRInTerminal: false // QR Code band karne ke liye
+    });
+
+    if (!sock.authState.creds.registered) {
+        const phoneNumber = "923294675242"; // Yahan apna WhatsApp number likhein (Country Code ke sath)
+        
+        setTimeout(async () => {
+            let code = await sock.requestPairingCode(phoneNumber);
+            console.log(`\n=================================\nAAPKA PAIRING CODE: ${code}\n=================================\n`);
+        }, 3000);
+    }
+
+    sock.ev.on('creds.update', saveCreds);
+}
+
+startBot();
