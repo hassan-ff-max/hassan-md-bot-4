@@ -1,16 +1,14 @@
 {
   "name": "hassan-md-bot",
   "version": "1.0.0",
-  "description": "HASSAN MD BOT Multi-Device WhatsApp Bot",
+  "description": "HASSAN MD BOT",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "^7.0.0",
-    "express": "^5.2.1",
-    "node-telegram-bot-api": "^2.1.0",
-    "pino": "^10.3.1"
+    "@whiskeysockets/baileys": "^6.7.8",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }
